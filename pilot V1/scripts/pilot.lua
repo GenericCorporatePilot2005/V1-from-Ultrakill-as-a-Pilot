@@ -29,11 +29,9 @@ function this:init(mod)
 
 	require(mod.scriptPath .."libs/pilotSkill_tooltip").Add(pilot.Skill, PilotSkill("Blood Lust", "If an adjacent vek suffers damage, heals 1 health point.\nReplaces repair with a punch that flips an enemy's attack."))
 
-	---- Feedbacker ----
+	---- Parry ----
 	Nico_V1skill = Skill:new{
-		Name = "Blood Lust",
 		Icon = "img/weapons/V1Punchrepair.png",
-		Description = "Repairing is replaced with a melee attack that flips enemies' attacks.",
 		Flip = true,
 		PathSize = 1,
 		Damage=1,
@@ -63,7 +61,7 @@ end
 
 	
 replaceRepair:addSkill{
-	Name = "Feedbacker",
+	Name = "Parry",
 	Description = "Repairing is replaced with a melee attack that flips enemies' attacks.",
 	weapon = "Nico_V1skill",
 	pilotSkill = "Nico_V1skill",
