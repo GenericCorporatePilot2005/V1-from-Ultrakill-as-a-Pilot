@@ -15,7 +15,7 @@ local pilot = {
 	Rarity = 1,
 	PowerCost = 1,
 	Voice = "/voice/ai",				-- audio. look in pilots.lua for more alternatives.
-	Skill = "bloodbath",				-- pilot's ability - Must add a tooltip for new skills.
+	Skill = "blooNico_V1skilldbath",				-- pilot's ability - Must add a tooltip for new skills.
 }
 
 CreatePilot(pilot)
@@ -25,21 +25,12 @@ modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1.png", path .."img/portrai
 modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1_2.png", path .."img/portraits/Nico_Pilot_V1_2.png")
 modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1_blink.png", path .."img/portraits/Nico_Pilot_V1_blink.png")
 
--- add ability tooltip - notice how the name is the same as pilot.Skill
-tooltips.Add(
-	"bloodbath",
-	PilotSkill(
-		"Blood Lust",
-		"If an adjacent vek suffers damage, heals 1 health point.\nReplaces repair with a punch that flips an enemy's attack"
-	)
-)
-
 function this:init(mod)
 
 	require(mod.scriptPath .."libs/pilotSkill_tooltip").Add(pilot.Skill, PilotSkill("Blood Lust", "If an adjacent vek suffers damage, heals 1 health point.\nReplaces repair with a punch that flips an enemy's attack."))
 
 	---- Feedbacker ----
-	bloodbath = Skill:new{
+	Nico_V1skill = Skill:new{
 		Name = "Blood Lust",
 		Icon = "img/weapons/V1Punchrepair.png",
 		Description = "Repairing is replaced with a melee attack that flips enemies' attacks.",
@@ -53,7 +44,7 @@ function this:init(mod)
 	}
 
 
-	function bloodbath:GetSkillEffect(p1, p2)
+	function Nico_V1skill:GetSkillEffect(p1, p2)
 		local ret = SkillEffect()
 		local push_damage = self.Flip and DIR_FLIP or direction
 		local damage = SpaceDamage(target, self.Damage, push_damage)
@@ -64,17 +55,20 @@ function this:init(mod)
 
 end
 
-	-- art, icons, animations
+function Nico_V1skill:GetTargetArea(point) 
+    local ret = PointList()
+	ret:push_back(curr)    
+    return ret 
+end
 	
-	replaceRepair:addSkill{
-		Name = "Feedbacker",
-		Description = "Repairing is replaced with a melee attack that flips enemies' attacks.",
-		weapon = "bloodbath",
-		pilotSkill = "bloodbath",
-		Icon = "img/weapons/V1Punchrepair.png",
-		IsActive = function(pawn)
-			return pawn:IsAbility(pilot.Skill)
-		end
-	}
-
+replaceRepair:addSkill{
+	Name = "Feedbacker",
+	Description = "Repairing is replaced with a melee attack that flips enemies' attacks.",
+	weapon = "Nico_V1skill",
+	pilotSkill = "Nico_V1skill",
+	Icon = "img/weapons/V1Punchrepair.png",
+	IsActive = function(pawn)
+		return pawn:IsAbility(pilot.Skill)
+	end
+}
 return this
