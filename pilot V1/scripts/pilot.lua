@@ -15,7 +15,7 @@ local pilot = {
 	Rarity = 1,
 	PowerCost = 1,
 	Voice = "/voice/ai",				-- audio. look in pilots.lua for more alternatives.
-	Skill = "blooNico_V1skilldbath",				-- pilot's ability - Must add a tooltip for new skills.
+	Skill = "Nico_V1skill",				-- pilot's ability - Must add a tooltip for new skills.
 }
 
 CreatePilot(pilot)
@@ -53,13 +53,14 @@ function this:init(mod)
 		return ret
 	end
 
+	function Nico_V1skill:GetTargetArea(point) 
+  	  local ret = PointList()
+		ret:push_back(curr)    
+	    return ret 
+	end
 end
 
-function Nico_V1skill:GetTargetArea(point) 
-    local ret = PointList()
-	ret:push_back(curr)    
-    return ret 
-end
+
 	
 replaceRepair:addSkill{
 	Name = "Feedbacker",
