@@ -31,7 +31,7 @@ function this:init(mod)
 
 	replaceRepair:addSkill{
 		Name = "Blood Lust",
-		Description = "If an adjacent vek is damaged, V1 heals.Repairing is replaced with a melee attack that flips enemies' attacks.",
+		Description = "Flips and damages enemies instead of repairing. Heals when adjacent Vek take damage.",
 		weapon = "Nico_V1skill",
 		pilotSkill = "Nico_V1skill",
 		Icon = "img/weapons/V1Punchrepair.png",
@@ -43,7 +43,7 @@ function this:init(mod)
 	---- Parry ----
 	Nico_V1skill = Skill:new{
 		Name = "Parry",
-		Description = "A melee attack that flips enemies' attacks. fully heals if the enemie is a vek.",
+		Description = "Flips and damages enemies instead of repairing. Fully heals if the enemy is a vek.",
 		Icon = "img/weapons/V1Punchrepair.png",
 		Flip = true,
 		PathSize = 1, --This does the TargetArea on its own, no need for our own
@@ -51,7 +51,7 @@ function this:init(mod)
 		TipImage = { --You'll have to create a custom tip image if you want the enemy to fire
 			Unit = Point(2,2),
 			Enemy = Point(2,1),
-			Queued = Point(2,2),
+			Queued = Point(3,1),
 			Target = Point(2,1),
 			CustomEnemy = "Firefly2",
 		} --Check Science_Confuse in weapons_science.lua if you want an example
