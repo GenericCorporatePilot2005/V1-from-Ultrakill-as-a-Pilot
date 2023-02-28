@@ -97,7 +97,7 @@ function this:init(mod)
 		local swipe = SpaceDamage(p2,0)
 		swipe.sAnimation = "SwipeClaw2"
 		local heal= SpaceDamage(p1,-10)
-		if Board:IsPawnSpace(p2) and Board:GetPawn(p2):GetDefaultFaction() ~= FACTION_BOTS then
+		if Board:IsPawnSpace(p2) and Board:GetPawn(p2):GetDefaultFaction() ~= FACTION_BOTS and Board:GetPawnTeam(p2) == TEAM_ENEMY then
 			ret:AddDamage(heal)
 			ret:AddDamage(swipe)
 			end
