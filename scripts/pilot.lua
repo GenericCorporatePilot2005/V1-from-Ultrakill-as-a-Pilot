@@ -49,11 +49,13 @@ function this:init(mod)
 		PathSize = 1, --This does the TargetArea on its own, no need for our own
 		Damage=1,
 		TipImage = { --You'll have to create a custom tip image if you want the enemy to fire
-			Unit = Point(2,2),
-			Enemy = Point(2,1),
-			Queued = Point(3,1),
-			Target = Point(2,1),
+			Unit = Point(1,2),
+			Enemy1 = Point(1,1),
+			Target = Point(1,1),
+			Queued1 = Point(2,1),
+			Friendly = Point(3,1),
 			CustomEnemy = "Firefly2",
+			Length = 4,
 		} --Check Science_Confuse in weapons_science.lua if you want an example
 	}
 	-- art, icons, animations
@@ -93,7 +95,7 @@ function this:init(mod)
 		local direction = GetDirection(p2-p1)
 		local push_damage = self.Flip and DIR_FLIP or direction
 		local damage = SpaceDamage(p2, self.Damage, push_damage)
-		damage.sAnimation = "V1punch_"..((direction-1)%4)
+		damage.sAnimation = "V1punch_"..((direction+1)%4)
 		local swipe = SpaceDamage(p2,0)
 		swipe.sAnimation = "SwipeClaw2"
 		local heal= SpaceDamage(p1,-10)
