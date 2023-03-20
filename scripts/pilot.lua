@@ -90,7 +90,7 @@ function this:init(mod)
 			PosX = -22,
 			PosY = -8,
 		}
-		V1Blood = Animation:new{
+		ANIMS.V1Blood = Animation:new{
 			Image = "effects/V1Blood.png",
 			NumFrames = 8,
 			Time = 0.08,
@@ -108,12 +108,10 @@ function this:init(mod)
 		local swipe = SpaceDamage(p2,0)
 		swipe.sAnimation = "SwipeClaw2"
 		local heal= SpaceDamage(p1,-10)
-		local Blood= SpaceDamage(p2,0)
-		Blood.sAnimation="V1Blood"
+		heal.sAnimation="V1Blood"
 		if Board:IsPawnSpace(p2) and Board:GetPawn(p2):GetDefaultFaction() ~= FACTION_BOTS and Board:GetPawnTeam(p2) == TEAM_ENEMY then
 			ret:AddDamage(heal)
 			ret:AddDamage(swipe)
-			ret:AddDamage(Blood)
 			end
 		ret:AddBounce(p1,1)
 		ret:AddBounce(p2,3)
