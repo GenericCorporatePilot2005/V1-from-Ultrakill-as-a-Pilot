@@ -31,7 +31,7 @@ function this:init(mod)
 
 	replaceRepair:addSkill{
 		Name = "Blood Lust",
-		Description = "Flips and damages enemies instead of repairing. Heals when adjacent Vek take damage.",
+		Description = "Instead of repairing, does a melee attack that flips the target's attacks and damages, if the target is a Vek, fully heals self.",
 		weapon = "Nico_V1skill",
 		pilotSkill = "Nico_V1skill",
 		Icon = "img/weapons/V1Punchrepair.png",
@@ -43,7 +43,7 @@ function this:init(mod)
 	---- Parry ----
 	Nico_V1skill = Skill:new{
 		Name = "Parry",
-		Description = "Flips and damages enemies instead of repairing. Fully heals if the enemy is a vek.",
+		Description = "Instead of repairing, does a melee attack that flips the target's attacks and damages, if the target is a Vek, fully heals self.",
 		Icon = "img/weapons/V1Punchrepair.png",
 		Flip = true,
 		PathSize = 1, --This does the TargetArea on its own, no need for our own
@@ -63,6 +63,7 @@ function this:init(mod)
 		modApi:appendAsset("img/effects/V1punch_L.png",mod.resourcePath.."img/effects/V1punch_L.png")
 		modApi:appendAsset("img/effects/V1punch_R.png",mod.resourcePath.."img/effects/V1punch_R.png")
 		modApi:appendAsset("img/effects/V1punch_U.png",mod.resourcePath.."img/effects/V1punch_U.png")
+		modApi:appendAsset("img/effects/V1Blood.png",mod.resourcePath.."img/effects/V1Blood.png")
 		
 		ANIMS.V1punch_0 = Animation:new{
 			Image = "effects/V1punch_U.png",
@@ -89,6 +90,14 @@ function this:init(mod)
 			PosX = -22,
 			PosY = -8,
 		}
+		V1Blood = Animation:new{
+			Image = "effects/V1Blood.png",
+			NumFrames = 8,
+			Time = 0.08,
+			
+			PosX = -22,
+			PosY = 1
+		}
 
 	function Nico_V1skill:GetSkillEffect(p1, p2)
 		local ret = SkillEffect()
@@ -99,9 +108,12 @@ function this:init(mod)
 		local swipe = SpaceDamage(p2,0)
 		swipe.sAnimation = "SwipeClaw2"
 		local heal= SpaceDamage(p1,-10)
+		local Blood= SpaceDamage(p2,0)
+		Blood.sAnimation="V1Blood"
 		if Board:IsPawnSpace(p2) and Board:GetPawn(p2):GetDefaultFaction() ~= FACTION_BOTS and Board:GetPawnTeam(p2) == TEAM_ENEMY then
 			ret:AddDamage(heal)
 			ret:AddDamage(swipe)
+			ret:AddDamage(Blood)
 			end
 		ret:AddBounce(p1,1)
 		ret:AddBounce(p2,3)
