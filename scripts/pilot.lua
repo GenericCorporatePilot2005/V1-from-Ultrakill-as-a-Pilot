@@ -112,7 +112,7 @@ function this:init(mod)
 		if Board:IsPawnSpace(p2) and Board:GetPawn(p2):GetDefaultFaction() ~= FACTION_BOTS and Board:GetPawnTeam(p2) == TEAM_ENEMY then
 			ret:AddDamage(heal)
 			ret:AddDamage(swipe)
-			end
+		end
 		ret:AddBounce(p1,1)
 		ret:AddBounce(p2,3)
 
