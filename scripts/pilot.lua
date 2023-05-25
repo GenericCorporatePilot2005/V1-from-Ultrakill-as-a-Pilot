@@ -10,7 +10,7 @@ local replaceRepair = require(scriptPath.."replaceRepair/replaceRepair")
 
 local pilot = {
 	Id = "Nico_Pilot_V1",					-- id must be unique. Used to link to art assets.
-	Personality = "Artificial",        -- must match the id for a personality you have added to the game.
+	Personality = "Vek",        -- must match the id for a personality you have added to the game.
 	Name = "V1",
 	Rarity = 1,
 	PowerCost = 1,
@@ -21,13 +21,11 @@ local pilot = {
 CreatePilot(pilot)
 
 -- add assets - notice how the name is identical to pilot.Id
-modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1.png", path .."img/portraits/Nico_Pilot_V1.png")
-modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1_2.png", path .."img/portraits/Nico_Pilot_V1_2.png")
-modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1_blink.png", path .."img/portraits/Nico_Pilot_V1_blink.png")
+	modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1.png", path .."img/portraits/Nico_Pilot_V1.png")
+	modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1_2.png", path .."img/portraits/Nico_Pilot_V1_2.png")
+	modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1_blink.png", path .."img/portraits/Nico_Pilot_V1_blink.png")
 
 function this:init(mod)
-
-	--This line errors because libs/pilotSkill_tooltip doesn't exist. You'll want to fix that before uncommenting this
 
 	replaceRepair:addSkill{
 		Name = "Blood Lust",
@@ -119,9 +117,6 @@ function this:init(mod)
 		ret:AddMelee(p2 - DIR_VECTORS[direction], damage)
 		return ret
 	end
-	
-	--Healing
-	
 end
 
 
