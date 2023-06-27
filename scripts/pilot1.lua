@@ -8,17 +8,17 @@ local mod = modApi:getCurrentMod()
 local scriptPath = modApi:getCurrentMod().scriptPath
 local replaceRepair = require(scriptPath.."replaceRepair/replaceRepair")
 
-local pilot = {
+local pilotV1 = {
 	Id = "Nico_Pilot_V1",					-- id must be unique. Used to link to art assets.
 	Personality = "Vek",        -- must match the id for a personality you have added to the game.
 	Name = "V1",
-	Rarity = 1,
+	Rarity = 2,
 	PowerCost = 1,
 	Voice = "/voice/ai",				-- audio. look in pilots.lua for more alternatives.
 	Skill = "Nico_V1skill",				-- pilot's ability - Must add a tooltip for new skills.
 }
 
-CreatePilot(pilot)
+CreatePilot(pilotV1)
 
 -- add assets - notice how the name is identical to pilot.Id
 	modApi:appendAsset("img/portraits/pilots/Nico_Pilot_V1.png", path .."img/portraits/Nico_Pilot_V1.png")
@@ -34,7 +34,7 @@ function this:init(mod)
 		pilotSkill = "Nico_V1skill",
 		Icon = "img/weapons/V1Punchrepair.png",
 		IsActive = function(pawn)
-			return pawn:IsAbility(pilot.Skill)
+			return pawn:IsAbility(pilotV1.Skill)
 		end
 	}
 

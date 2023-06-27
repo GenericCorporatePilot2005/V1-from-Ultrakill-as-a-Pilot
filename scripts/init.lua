@@ -12,8 +12,10 @@ local mod = {
 
 function mod:init()
 	-- look in template/pilot to see how to code pilots.
-	local pilot = require(self.scriptPath .."pilot")
-	pilot:init(mod)
+	local pilotV1 = require(self.scriptPath .."pilot1")
+	local pilotV2 = require(self.scriptPath .."pilot2")
+	pilotV1:init(mod)
+	pilotV2:init(mod)
 	local replaceRepair = require(self.scriptPath.."replaceRepair/replaceRepair")
 end
 
