@@ -4,7 +4,7 @@
 local mod = {
 	id = "Nico_V1_Pilot",
 	name = "V1 Ultrakill pilot",
-	version = "1.0",
+	version = "2 is here too!",
 	requirements = {},
 	modApiVersion = "2.3.0",
 	icon = "img/mod_icon.png"
