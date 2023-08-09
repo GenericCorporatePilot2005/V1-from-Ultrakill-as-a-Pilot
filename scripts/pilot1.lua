@@ -48,9 +48,9 @@ function this:init(mod)
 		Damage=1,
 		TipImage = { --You'll have to create a custom tip image if you want the enemy to fire
 			Unit = Point(1,2),
-			Enemy1 = Point(1,1),
+			Enemy = Point(1,1),
 			Target = Point(1,1),
-			Queued1 = Point(2,1),
+			Queued = Point(3,1),
 			Friendly = Point(3,1),
 			CustomEnemy = "Firefly2",
 			Length = 4,

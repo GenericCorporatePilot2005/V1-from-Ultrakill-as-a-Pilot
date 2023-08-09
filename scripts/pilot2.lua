@@ -29,7 +29,7 @@ function this:init(mod)
 
 	replaceRepair:addSkill{
 		Name = "Clair de Lune",
-		Description = "Instead of repairing, punch an adjacent tile, dealing huge damage and pushing adjacent tiles.",
+		Description = "Instead of repairing, punch an adjacent tile, dealing huge damage and pushing tiles adjacent to target.",
 		weapon = "Nico_V2skill",
 		pilotSkill = "Nico_V2skill",
 		Icon = "img/weapons/V2Punchrepair.png",
@@ -45,7 +45,7 @@ function this:init(mod)
 		Icon = "img/weapons/V2Punchrepair.png",
 		PathSize = 1,
 		Damage = 2,
-		PowerCost = 0, --AE Change
+		PowerCost = 0,
 		Upgrades = 0,
 		Limited = 0,
 		LaunchSound = "/weapons/titan_fist",
